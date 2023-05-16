@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMovies">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetMoviesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMoviesResult" type="tns:ArrayOfMovie" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMovie">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Movie" nillable="true" type="tns:Movie" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Movie">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Director" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Rating" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddMovie">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Director" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddMovieResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SearchMovies">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchMoviesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchMoviesResult" type="tns:ArrayOfMovie" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddRating">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="movieTitle" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="rating" type="s:float" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddRatingResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LoginResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddUserResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMovieAverageRating">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="movieTitle" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMovieAverageRatingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetMovieAverageRatingResult" type="s:float" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetMovieAverageRating">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="movieTitle" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetMovieAverageRatingResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUserRatings">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserRatingsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserRatingsResult" type="tns:ArrayOfUserRating" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUserRating">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UserRating" nillable="true" type="tns:UserRating" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserRating">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MovieTitle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Rating" type="s:float" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMoviesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMovies" />
+  </wsdl:message>
+  <wsdl:message name="GetMoviesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMoviesResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddMovieSoapIn">
+    <wsdl:part name="parameters" element="tns:AddMovie" />
+  </wsdl:message>
+  <wsdl:message name="AddMovieSoapOut">
+    <wsdl:part name="parameters" element="tns:AddMovieResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchMoviesSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchMovies" />
+  </wsdl:message>
+  <wsdl:message name="SearchMoviesSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchMoviesResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddRatingSoapIn">
+    <wsdl:part name="parameters" element="tns:AddRating" />
+  </wsdl:message>
+  <wsdl:message name="AddRatingSoapOut">
+    <wsdl:part name="parameters" element="tns:AddRatingResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUserSoapIn">
+    <wsdl:part name="parameters" element="tns:AddUser" />
+  </wsdl:message>
+  <wsdl:message name="AddUserSoapOut">
+    <wsdl:part name="parameters" element="tns:AddUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMovieAverageRatingSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMovieAverageRating" />
+  </wsdl:message>
+  <wsdl:message name="GetMovieAverageRatingSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMovieAverageRatingResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetMovieAverageRatingSoapIn">
+    <wsdl:part name="parameters" element="tns:SetMovieAverageRating" />
+  </wsdl:message>
+  <wsdl:message name="SetMovieAverageRatingSoapOut">
+    <wsdl:part name="parameters" element="tns:SetMovieAverageRatingResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserRatingsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserRatings" />
+  </wsdl:message>
+  <wsdl:message name="GetUserRatingsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserRatingsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MovieServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMovies">
+      <wsdl:input message="tns:GetMoviesSoapIn" />
+      <wsdl:output message="tns:GetMoviesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMovie">
+      <wsdl:input message="tns:AddMovieSoapIn" />
+      <wsdl:output message="tns:AddMovieSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchMovies">
+      <wsdl:input message="tns:SearchMoviesSoapIn" />
+      <wsdl:output message="tns:SearchMoviesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRating">
+      <wsdl:input message="tns:AddRatingSoapIn" />
+      <wsdl:output message="tns:AddRatingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <wsdl:input message="tns:AddUserSoapIn" />
+      <wsdl:output message="tns:AddUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMovieAverageRating">
+      <wsdl:input message="tns:GetMovieAverageRatingSoapIn" />
+      <wsdl:output message="tns:GetMovieAverageRatingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetMovieAverageRating">
+      <wsdl:input message="tns:SetMovieAverageRatingSoapIn" />
+      <wsdl:output message="tns:SetMovieAverageRatingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserRatings">
+      <wsdl:input message="tns:GetUserRatingsSoapIn" />
+      <wsdl:output message="tns:GetUserRatingsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MovieServiceSoap" type="tns:MovieServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMovies">
+      <soap:operation soapAction="http://tempuri.org/GetMovies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMovie">
+      <soap:operation soapAction="http://tempuri.org/AddMovie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchMovies">
+      <soap:operation soapAction="http://tempuri.org/SearchMovies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRating">
+      <soap:operation soapAction="http://tempuri.org/AddRating" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <soap:operation soapAction="http://tempuri.org/AddUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMovieAverageRating">
+      <soap:operation soapAction="http://tempuri.org/GetMovieAverageRating" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetMovieAverageRating">
+      <soap:operation soapAction="http://tempuri.org/SetMovieAverageRating" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserRatings">
+      <soap:operation soapAction="http://tempuri.org/GetUserRatings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MovieServiceSoap12" type="tns:MovieServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMovies">
+      <soap12:operation soapAction="http://tempuri.org/GetMovies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMovie">
+      <soap12:operation soapAction="http://tempuri.org/AddMovie" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchMovies">
+      <soap12:operation soapAction="http://tempuri.org/SearchMovies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRating">
+      <soap12:operation soapAction="http://tempuri.org/AddRating" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <soap12:operation soapAction="http://tempuri.org/AddUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMovieAverageRating">
+      <soap12:operation soapAction="http://tempuri.org/GetMovieAverageRating" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetMovieAverageRating">
+      <soap12:operation soapAction="http://tempuri.org/SetMovieAverageRating" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserRatings">
+      <soap12:operation soapAction="http://tempuri.org/GetUserRatings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MovieService">
+    <wsdl:port name="MovieServiceSoap" binding="tns:MovieServiceSoap">
+      <soap:address location="https://localhost:44398/MovieService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MovieServiceSoap12" binding="tns:MovieServiceSoap12">
+      <soap12:address location="https://localhost:44398/MovieService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

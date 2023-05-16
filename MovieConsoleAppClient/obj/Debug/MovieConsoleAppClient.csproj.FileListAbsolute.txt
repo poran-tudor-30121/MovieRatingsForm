@@ -1,0 +1,6 @@
+D:\Facultate stuff\II\TEMA2_2\MovieConsoleAppClient\bin\Debug\MovieConsoleAppClient.exe.config
+D:\Facultate stuff\II\TEMA2_2\MovieConsoleAppClient\bin\Debug\MovieConsoleAppClient.exe
+D:\Facultate stuff\II\TEMA2_2\MovieConsoleAppClient\bin\Debug\MovieConsoleAppClient.pdb
+D:\Facultate stuff\II\TEMA2_2\MovieConsoleAppClient\obj\Debug\MovieConsoleAppClient.csproj.CoreCompileInputs.cache
+D:\Facultate stuff\II\TEMA2_2\MovieConsoleAppClient\obj\Debug\MovieConsoleAppClient.exe
+D:\Facultate stuff\II\TEMA2_2\MovieConsoleAppClient\obj\Debug\MovieConsoleAppClient.pdb
